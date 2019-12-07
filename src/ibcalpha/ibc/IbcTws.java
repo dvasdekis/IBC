@@ -458,6 +458,9 @@ public class IbcTws {
         if (!Settings.settings().getString("ReadOnlyApi", "").equals("")) {
             (new ConfigurationTask(new ConfigureReadOnlyApiTask(Settings.settings().getBoolean("ReadOnlyApi",true)))).executeAsync();
         }
+        if (!Settings.settings().getString("AllowConnectionsFromLocalhostOnly", "").equals("")) {
+            (new ConfigurationTask(new ConfigureAllowConnectionsFromLocalhostOnlyTask(Settings.settings().getBoolean("AllowConnectionsFromLocalHostOnly",true)))).executeAsync();
+        }
 
         Utils.sendConsoleOutputToTwsLog(!Settings.settings().getBoolean("LogToConsole", false));
     }
